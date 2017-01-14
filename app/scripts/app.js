@@ -1,5 +1,3 @@
-angular.module('blocJams', ['ui.router']);
-
 (function(){
     function config($stateProvider, $locationProvider){
         $locationProvider
@@ -12,21 +10,21 @@ angular.module('blocJams', ['ui.router']);
             
             .state('landing', {
                 url: '/',
-                tempalteUrl: 'templates/landing.html'
+                tempalteUrl: '/templates/landing.html'
             })
            
             .state('album', {
-                url: 'album',
+                url: '/album',
                 templateUrl: '/templates/album.html'
             })
             
             .state('collection', {
-                url: 'collection',
-                templateUrl: 'templates/collection.html'
+                url: '/collection',
+                templateUrl: '/templates/collection.html'
         });
     }
     
     angular
-        .module('blocJams', [ui.router])
+        .module('blocJams', ['ui.router'])
         .config(config);
 })();
