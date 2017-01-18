@@ -1,24 +1,24 @@
 <main class="album-view container narrow">
     <section class="clearfix">
         <div class="column half">
-            <img src="{{ }}" class="album-cover-art"> <!-- need to put in album data using markup -->
+            <img src="{{album.albumArtUrl }}" class="album-cover-art"> <!-- need to put in album data using markup -->
         </div>
-        <div class="album-view-details column half">
-            <h2 class="album-view-title"> {{ }} </h2> <!-- need to put in album data using markup -->
-            <h3 class="album-view-artist"> {{ }} </h3> <!-- need to put in album data using markup -->
-            <h5 class="album-view-release-info"> {{ }} </h5> <!-- need to put in album data using markup -->
+        <div class="album-view-details column half" ng-repeat="album-view-details in album.albumData ">
+            <h2 class="album-view-title"> {{ album-view-details.album-view-title }} </h2> <!-- need to put in album data using markup -->
+            <h3 class="album-view-artist"> {{ album-view-details.album-view-artist }} </h3> <!-- need to put in album data using markup -->
+            <h5 class="album-view-release-info"> {{ album-view-details.album-view-release-info }} </h5> <!-- need to put in album data using markup -->
         </div>
     </section>
     <table class="album-view-song-list">
-        <tr class="album-view-song-item" ng-mouseover="hovered = true" ng-mouseleave="hovered = false" ng-repeat="album-view-song-list in album.albumData ">
+        <tr class="album-view-song-item" ng-mouseover="hovered = true" ng-mouseleave="hovered = false" ng-repeat="album-view-song-item in album.albumData ">
             <td class="song-item-number">
-                <span ng-show="!playing && !hovered"> {{ album-view-song-list.song-item-number }} </span>
+                <span ng-show="!playing && !hovered"> {{ album-view-song-item.song-item-number }} </span>
                 <a class="album-song-button" ng-show="!playing && hovered"><span class="ion-play"></span></a>
                 <a class="album-song-button" ng-show="playing"><span class="ion-pause"></span></a>
             
             </td>
-            <td class="song-item-title"> {{ album-view-song-list.song-item-title }} </td>
-            <td class="song-item-duration"> {{ album-view-song-list.song-item-dureation }} </td>
+            <td class="song-item-title"> {{ album-view-song-item.song-item-title }} </td>
+            <td class="song-item-duration"> {{ album-view-song-item.song-item-dureation }} </td>
         </tr>
     </table>
 </main>
