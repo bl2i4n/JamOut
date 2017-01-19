@@ -12,17 +12,21 @@ angular.module('blocJams', ['ui.router']);
             
             .state('landing', {
                 url: '/',
-                tempalteUrl: 'templates/landing.html'
+                controller: 'LandingCtrl as landing',
+                tempalteUrl: '/templates/landing.html'
             })
            
             .state('album', {
                 url: 'album',
+                controller: 'AlbumCtrl',
+                controllerAs: 'album',
                 templateUrl: '/templates/album.html'
             })
             
             .state('collection', {
                 url: 'collection',
-                templateUrl: 'templates/collection.html'
+                controller: 'CollectionCtrl as collection',
+                templateUrl: '/templates/collection.html'
         });
     }
     
