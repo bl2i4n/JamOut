@@ -8,6 +8,11 @@ angular.module('blocJams', ['ui.router']);
                 requireBase: false
         });
         
+        
+        asdfasdf
+        onServerStartedfas
+        DocumentFragmentsadf
+        
         $stateProvider
             
             .state('landing', {
