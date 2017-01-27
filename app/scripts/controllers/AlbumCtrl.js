@@ -1,16 +1,17 @@
 (function(){
-    angular
-        .module('blocJams')
-        .controller('AlbumCtrl', AlbumCtrl);
 
-    function AlbumCtrl() {
-        var vm = this;
 
-        vm.albumData = albumPicasso;
-        vm.do_something = show_alert;
+function AlbumCtrl(Fixtures, SongPlayer) {
+//        var vm = this;
+//        vm.albumData = angular.copy(albumPicasso);
+    this.albumData = Fixtures.getAlbum();
+    this.songPlayer = SongPlayer;
+}
+//        vm.do_something = show_alert;
         
-        activate(); 
-        
+//        activate(); 
+
+/*
         function activate() {
             console.log("Hi, from the AlbumCtrl!");
             vm.do_something("Hello aert mesg");
@@ -22,5 +23,11 @@
             alert(msg);
         };
     }
+  */  
+    angular
+        .module('blocJams')
+        .controller('AlbumCtrl', ['Fixtures', 'SongPlayer', AlbumCtrl]);
     
 })();
+
+
