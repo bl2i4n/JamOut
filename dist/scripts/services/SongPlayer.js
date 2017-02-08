@@ -1,15 +1,26 @@
-(function(Fixtures){
-    function SongPlayer() {
-        var SongPlayer = {};
+(function(){
+    function SongPlayer($rootScope, Fixtures) {
         
         //method used to store album info
         var currentAlbum = Fixtures.getAlbum();
+        
+        var SongPlayer = {};
 
         /*
         *@desc Buzz object audio file
         *@type {Object}
         */
         var currentBuzzObject = null;
+        
+        /**
+        *@function getSongIndex
+        *@desc holds index of song
+        *@param {Object} song
+        */
+        var getSongIndex= function(song) {
+            return currentAlbum.songs.indexOf(song);
+        };        
+        
         
         /**
         *@function setSong
@@ -31,15 +42,6 @@
             
         };
         
-        /**
-        *@function getSongIndex
-        *@desc holds index of song
-        *@param {Object} song
-        */
-        var getSongIndex= function(song) {
-            return album.songs.indexOf(song);
-        };
-        
         
         /**
         *@desc Active song object from list of songs
@@ -58,6 +60,11 @@
             currentBuzzObject.play();
             song.playing = true; 
         }
+        
+        var stopSong = function(song){
+            currentBuzzObject.stop();
+            song.playing = null;
+        }
        
         /**
         *@function play
@@ -71,7 +78,7 @@
                     setSong(song);
                     playSong(song);
                 } else if (SongPlayer.currentSong === song){
-                    if(currentBuzzObject.isPaused()){
+                    if(currentBuzzObject.pause()){
                         playSong(song);
                     }
                 }
@@ -98,8 +105,26 @@
             currentSongIndex--;
             
             if (currentSongIndex < 0){
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong(song);
+            } else {
+                var song = currentAlbum.songs[currentSongIndex];
+                setSong(song);
+                playSong(song);
+            }
+            
+        };
+        
+        /*
+        *@function next
+        *@desc sets a variable currentSongIndex and uses getSongIndex variable to get the song index of the current song from songPlayer
+        then increments by 1 for the next song
+        */        
+        SongPlayer.next = function(){
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+            
+            if (currentSongIndex < 0){
+                stopSong(song);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
