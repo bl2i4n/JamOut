@@ -51,11 +51,28 @@
         SongPlayer.currentSong = null;
         
         /*
+        *@desc Current playback time (in seconds) of currently playing song
+        *@type {Number}
+        */
+        SongPlayer.currentTime = null;
+        
+        /**
+        *@function setCurrentTime
+        *@desc Set current time (in seconds) of currently playing song
+        *@param {Number} time
+        */
+        SongPlayer.setCurrenTime = function(time){
+            if(currentBuzzObject){
+                currentBuzzObject.setTime(time);
+            }
+        };
+
+        
+        /*
         *@function playSong
         *@desc initiates play for currently playing song and sets current song to true
         *@param {Object} song
         */
-        
         var playSong = function(song){
             currentBuzzObject.play();
             song.playing = true; 
@@ -105,7 +122,7 @@
             currentSongIndex--;
             
             if (currentSongIndex < 0){
-                stopSong(song);
+                stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
@@ -120,11 +137,17 @@
         then increments by 1 for the next song
         */        
         SongPlayer.next = function(){
+//            debugger;
+
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
             
-            if (currentSongIndex < 0){
-                stopSong(song);
+            //|| currentSongIndex >= currentAlbum.songs.length-1
+            if (currentSongIndex <= 0 || currentSongIndex > currentAlbum.songs.length-1){
+                //when we are at the last song we want to just stop playing songs
+                //call the stopSong function which calls the song
+                
+                stopSong(SongPlayer.currentSong);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
