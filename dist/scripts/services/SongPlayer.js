@@ -38,6 +38,13 @@
                 preload: true
             });
             
+            currentBuzzObject.bind('timeupdate', function(){
+               $rootScope.$apply(function(){
+                  SongPlayer.currentTime = currentBuzzObject.getTime(); 
+               }); 
+            });
+    
+            
             SongPlayer.currentSong = song;
             
         };
@@ -55,6 +62,12 @@
         *@type {Number}
         */
         SongPlayer.currentTime = null;
+
+        /*
+        *@desc current volume of song
+        *@type {Object}
+        */
+        SongPlayer.currentVolume = null;
         
         /**
         *@function setCurrentTime
@@ -66,7 +79,21 @@
                 currentBuzzObject.setTime(time);
             }
         };
-
+        
+        /*
+        *
+        *
+        *
+        */
+        
+        SongPlayer.volume = 80;
+        
+        SongPlayer.setVolume = function(volume){
+            if(currentBuzzObject){
+                currentBuzzObject.setVolume(volume);
+            }
+            SongPlayer.volume = volume;
+        }
         
         /*
         *@function playSong
