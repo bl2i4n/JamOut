@@ -81,13 +81,10 @@
         };
         
         /*
-        *
-        *
-        *
+        *@function setVolume
+        *@desc set vvolme checking if currentBuzzObject is present then using setVolume method to set volume
+        *@param {volume}
         */
-        
-        SongPlayer.volume = 80;
-        
         SongPlayer.setVolume = function(volume){
             if(currentBuzzObject){
                 currentBuzzObject.setVolume(volume);
