@@ -74,7 +74,7 @@
         *@desc Set current time (in seconds) of currently playing song
         *@param {Number} time
         */
-        SongPlayer.setCurrenTime = function(time){
+        SongPlayer.setCurrentTime = function(time){
             if(currentBuzzObject){
                 currentBuzzObject.setTime(time);
             }
