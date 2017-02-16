@@ -1,9 +1,11 @@
+//use controllers for the logic behind each behavior
 //define a controller for the Landing view
 (function() {
     function LandingCtrl(){
         this.heroTitle = "Turn the Music Up!";
     };
     
+    //this portion is the callback for using this function when it is called
     angular
         .module('blocJams')
     //constructors are capitalized

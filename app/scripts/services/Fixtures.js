@@ -1,5 +1,7 @@
+//maybe the meat and muscle of the whole project
 (function(){
     function Fixtures() {
+    //empty Fixtures object to hold the calls?
     var Fixtures = {};
         
     var albumPicasso = {

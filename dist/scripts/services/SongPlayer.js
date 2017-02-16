@@ -1,9 +1,10 @@
 (function(){
-    function SongPlayer($rootScope, Fixtures) {
+    function SongPlayer($rootScope, Fixtures) { //$rootScope is for a variable that is accessible throughout our whole project
         
         //method used to store album info
         var currentAlbum = Fixtures.getAlbum();
         
+        //empty SongPlayer object
         var SongPlayer = {};
 
         /*
@@ -114,8 +115,13 @@
         */
         //play method for the function SongPlayer
         SongPlayer.play = function(song) {
+            debugger;
             song = song || SongPlayer.currentSong;
             if(SongPlayer.currentSong !== song){
+                    setSong(song);
+                    playSong(song);
+                } else if ( SongPlayer.currentSong === null) {
+                    song = currentAlbum.songs[0];
                     setSong(song);
                     playSong(song);
                 } else if (SongPlayer.currentSong === song){
