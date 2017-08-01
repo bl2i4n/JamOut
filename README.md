@@ -1,7 +1,7 @@
-## Bloc Frontend Project Starter
+## Jam Out
 ![alt tag](https://github.com/bl2i4n/bloc-jams-angular/blob/master/app/assets/images/ss_bloc_jams.png)
 
-A starter application for student projects in Bloc's [Frontend Web Development Course](https://www.bloc.io/frontend-development-bootcamp).
+Application for listening to tunes!
 
 ## Configuration
 
